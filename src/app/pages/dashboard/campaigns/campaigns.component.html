@@ -1,0 +1,88 @@
+<div class="relative p-8">
+  <div class="flex justify-between w-full">
+    <h1 class="text-primary-off-white text-3xl font-poppins font-semibold">Campaigns</h1>
+    <div class="relative z-40">
+      <ul class="flex flex-col gap-4 justify-start">
+        <div class="bg-primary-dark-blue text-primary-light-gray px-4 py-2 rounded-lg cursor-pointer text-center" (click)="toggleDropdown()">
+          <div class="flex gap-4 items-center justify-center">
+            <p class="text-secondary-hade-blue">Create a new Campaign</p>
+          </div>
+          <ul *ngIf="isDropDownVisible" class="absolute top-[12px] left-0 rounded-b-lg bg-primary-dark-blue w-full mt-6 flex flex-col justify-start text-center">
+            <li class="flex items-center hover:text-primary-off-white border-t border-b border-primary-lighter-gray px-2 py-1 justify-center"><a routerLink="/dashboard/email">Email campaign</a></li>
+            <li class="flex items-center hover:text-primary-off-white border-b border-primary-lighter-gray px-2 py-1 justify-center"><a routerLink="/dashboard/whatsapp">WhatsApp campaign</a></li>
+            <li class="flex items-center hover:text-primary-off-white border-b border-primary-lighter-gray px-2 py-1 rounded-b-lg justify-center"><a routerLink="/dashboard/sms">SMS campaign</a></li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div class="flex flex-col gap-2 mt-6">
+    <p class="text-sm text-secondary-hade-blue">
+      <span class="font-roboto font-medium">20</span> campaigns selected
+    </p>
+  </div>
+  <div class="flex-1 mt-6 bg-primary-dark-slate border border-primary-lighter-gray rounded-lg">
+    <table class="table-auto w-full">
+      <thead class="flex-auto border-b border-primary-lighter-gray text-left text-primary-off-white">
+        <tr>
+          <th class="flex items-center gap-4 p-6">
+            <input type="checkbox" class="w-[15px] h-[15px] bg-primary-lighter-gray text-primary-lighter-gray border-primary-off-white" /> Name
+          </th>
+          <th class="p-6">List Name</th>
+          <th class="p-6 ml-12">Type</th>
+          <th class="p-6 ml-12">Subject</th>
+          <th class="p-6">Status</th>
+          <th class="p-6"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-primary-light-gray bg-primary-Dark-gray text-left">
+          <td class="px-6 py-4">
+            <div class="flex items-center gap-4">
+              <input type="checkbox" class="w-[15px] h-[15px] bg-primary-lighter-gray text-primary-lighter-gray border-primary-off-white" />
+              <p class="text-primary-off-white font-poppins font-normal">My First List</p>
+            </div>
+          </td>
+          <td class="px-6 py-4">
+            <p>My first list</p>
+          </td>
+          <td class="px-6 py-4">
+            <p>Email</p>
+          </td>
+          <td class="px-6 py-4">
+            <p>Lorem amet consectetur adipisicing elit.</p>
+          </td>
+          <td class="px-6 py-4">
+            <button class="bg-primary-lighter-gray text-secondary-success px-3 py-2 rounded-lg">Active</button>
+          </td>
+          <td class="px-6 py-4">
+            <div class="flex gap-4">
+              <button class="flex gap-2 items-center bg-primary-dark-blue text-secondary-hade-blue px-3 py-2 rounded-lg">
+                 Edit
+              </button>
+              <button class="flex gap-2 items-center bg-primary-dark-blue text-secondary-hade-blue px-3 py-2 rounded-lg">
+                 Delete
+              </button>
+              
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot class="text-center">
+        <tr>
+          <td colSpan="6" class="py-3">
+            <div class="flex justify-center items-center gap-4">
+              <span class="text-sm text-primary-off-white">Showing 1 to 4 of 4 results</span>
+              <div class="flex items-center gap-2 text-sm bg-primary-dark-blue text-primary-off-white p-2 rounded-lg">
+                Per page | 10
+              </div>
+              <div class="flex items-center gap-2 text-sm bg-primary-dark-blue text-primary-off-white p-2 rounded-lg">
+                1 | 2 | 3 
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
