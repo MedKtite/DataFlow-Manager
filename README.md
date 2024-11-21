@@ -27,3 +27,7 @@ Follow these steps to set up and run the project locally:
    ```bash  
    git clone https://github.com/MedKtite/DataFlow.git  
    cd DataFlow  
+<<<<<<< HEAD
+=======
+-m
+>>>>>>> c42c971 (🔧 chore: update .gitignore to exclude some files)
