@@ -4,7 +4,7 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { faUserPlus, faBullhorn, faRepeat, faChartBar, faCog, faTachometerAlt, faList, faEnvelope, faSms, faComments } from '@fortawesome/free-solid-svg-icons';
 import { RouterModule } from '@angular/router';
 
-import { navData,  } from './nav-data';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -14,7 +14,6 @@ import { navData,  } from './nav-data';
   imports: [CommonModule, FontAwesomeModule, RouterModule,]
 })
 export class SidebarComponent {
-  navData = navData;
 
   constructor(library: FaIconLibrary) {
     library.addIcons(faUserPlus, faBullhorn, faRepeat, faChartBar, faCog, faTachometerAlt, faList, faEnvelope, faSms, faComments);
