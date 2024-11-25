@@ -1,0 +1,7 @@
+<li>
+    <fa-icon [icon]="icon" class="text-2xl text-primary-light-gray"></fa-icon>
+    <a href="#" class="text-lg poppins-regular" [routerLink]="link">{{title}}</a>
+</li>
+<ul ng*="isOpen" class="ml-8 mt-2 flex flex-col gap-4">
+    <ng-content></ng-content>
+</ul>

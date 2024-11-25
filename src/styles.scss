@@ -1,15 +1,14 @@
-/* Import TailwindCSS layers */
-@use 'tailwindcss/base';
-@use 'tailwindcss/components';
-@use 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Apply global styles */
+
 body {
     @apply bg-primary-Dark-gray text-white;
     font-family: 'Roboto', 'Poppins', sans-serif;
 }
 
-/* Self-hosted fonts */
+
 /* Roboto */
 @font-face {
     font-family: 'Roboto';

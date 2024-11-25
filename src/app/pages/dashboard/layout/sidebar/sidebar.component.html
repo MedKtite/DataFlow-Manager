@@ -4,8 +4,19 @@
         <ul class="flex flex-col items-start gap-12">
             <li class="text-primary-light-gray flex gap-3 items-center poppins-semi-bold text-sm hover:text-primary-off-white">
                 <fa-icon [icon]="[ 'fas', 'chart-bar']" class="text-2xl text-primary-light-gray"></fa-icon>
-                <a class="text-lg poppins-regular" href="#">Dashboard</a>
+                <a class="text-lg poppins-regular" href="#">Overview</a>
             </li>
+            <app-submenu>
+                <li>
+                    <fa-icon [icon]="[ 'fas', 'user-plus']" class="text-2xl text-primary-light-gray"></fa-icon>
+                    <a class="text-lg poppins-regular" href="#">Contact</a>
+                </li>
+                <ul class="ml-8 mt-2 flex flex-col gap-4">
+                    <li>
+                        <a class="text-lg poppins-regular" href="#">Lists</a>
+                    </li>
+                </ul>
+            </app-submenu>
         </ul>
     </div>
 </div>
