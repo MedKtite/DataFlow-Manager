@@ -5,17 +5,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-submenu',
+  standalone: true,
   imports: [CommonModule, RouterModule, FontAwesomeModule], 
   templateUrl: './submenu.component.html',
-  styleUrl: './submenu.component.scss'
+  styleUrls: ['./submenu.component.scss']
 })
 export class SubmenuComponent {
   @Input() title!: string;
   @Input() link!: string;
-  @Input() icon!: string;
+  @Input() icon!: string; 
   isOpen = false;
+
   toggleSubmenu() {
     this.isOpen = !this.isOpen;
-}
-
+  }
 }

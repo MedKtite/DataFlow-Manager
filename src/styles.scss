@@ -1,7 +1,10 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import '../node_modules/@iconscout/unicons/css/line.css';
 
 body {
     @apply bg-primary-Dark-gray text-white;
