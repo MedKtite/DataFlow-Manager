@@ -13,9 +13,12 @@ import { SubmenuComponent } from '../../../../shared/submenu/submenu.component';
   imports: [CommonModule, RouterModule, SubmenuComponent]
 })
 export class SidebarComponent {
+  openSubmenu: string | null = null; 
 
 
-  handleCollapse() {
-
-  }
+  toggleSubmenu(submenu: string) {
+    this.openSubmenu = this.openSubmenu === submenu ? null : submenu;
 }
+
+}
+
