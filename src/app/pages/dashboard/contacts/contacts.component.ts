@@ -1,11 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { AddNewContactComponent } from '../../../shared/add-new-contact/add-new-contact.component';
+
+
 
 @Component({
   selector: 'app-contacts',
-  imports: [],
   templateUrl: './contacts.component.html',
-  styleUrl: './contacts.component.scss'
+  styleUrls: ['./contacts.component.scss'],
+  imports: [ CommonModule, AddNewContactComponent]
 })
 export class ContactsComponent {
+  isOpened = false;
 
+  toggleAddNewContact() {
+    this.isOpened = !this.isOpened;
+  }
 }

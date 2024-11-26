@@ -15,7 +15,7 @@ import { AboutComponent } from './pages/home/about/about.component';
 
 export const routes: Routes = [
     {
-      path: '/',
+      path: '',
       component: HomeComponent,
       children: [
         { path: 'about', component: AboutComponent },

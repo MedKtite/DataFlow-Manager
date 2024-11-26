@@ -1,0 +1,72 @@
+<div class="absolute h-screen overflow-y-auto -top-8 -right-[15px] bg-primary-dark-slate my-4 border border-primary-lighter-gray">
+  <div id="header" class="flex gap-12 border-b border-primary-lighter-gray px-12 py-6">
+    <h1 class="flex gap-4 items-center font-roboto text-primary-off-white font-medium text-3xl">
+      <i class="uil uil-dot-circle text-2xl"></i> Create a contact
+    </h1>
+    <button class="absolute right-4" (click)="onClose()">
+      <i class="uil uil-times text-4xl text-secondary-hade-blue"></i>
+    </button>
+  </div>
+  <form [formGroup]="contactForm" (ngSubmit)="handleSubmit()">
+    <!-- First Name -->
+    <div class="flex flex-col px-12 py-4">
+      <h1 class="text-xl font-roboto font-medium text-primary-off-white">FIRST NAME</h1>
+      <input
+        formControlName="firstName"
+        type="text"
+        placeholder="Enter the FIRST NAME"
+        class="w-[420px] py-4 mt-3 text-primary-off-white px-5 bg-primary-lighter-gray rounded-lg focus:ring-2 focus:ring-secondary-purple focus:outline-none focus:border-transparent"
+      />
+    </div>
+    <!-- Last Name -->
+    <div class="flex flex-col px-12 py-2">
+      <h1 class="text-xl font-roboto font-medium text-primary-off-white">LAST NAME</h1>
+      <input
+        formControlName="lastName"
+        type="text"
+        placeholder="Enter the LAST NAME"
+        class="w-[420px] py-4 mt-3 text-primary-off-white px-5 bg-primary-lighter-gray rounded-lg focus:ring-2 focus:ring-secondary-purple focus:outline-none focus:border-transparent"
+      />
+    </div>
+    <!-- Email -->
+    <div class="flex flex-col px-12 py-2">
+      <h1 class="text-xl font-roboto font-medium text-primary-off-white">EMAIL</h1>
+      <input
+        formControlName="email"
+        type="text"
+        placeholder="Enter the email address"
+        class="w-[420px] py-4 mt-3 text-primary-off-white px-5 bg-primary-lighter-gray rounded-lg focus:ring-2 focus:ring-secondary-purple focus:outline-none focus:border-transparent"
+      />
+    </div>
+    <!-- Phone -->
+    <div class="flex flex-col px-12 py-2">
+      <h1 class="text-xl font-roboto font-medium text-primary-off-white">SMS</h1>
+      <app-phone-number formControlName="phone"></app-phone-number>
+    </div>
+    <!-- WhatsApp -->
+    <div class="flex flex-col px-12 py-2">
+      <h1 class="text-xl font-roboto font-medium text-primary-off-white">WHATSAPP</h1>
+      <app-phone-number formControlName="whatsApp"></app-phone-number>
+    </div>
+    <!-- Country & City -->
+    <div class="flex flex-col px-12 py-2">
+      <h1 class="text-xl font-roboto font-medium text-primary-off-white">COUNTRY & CITY</h1>
+      <!-- <app-country-city></app-country-city> -->
+    </div>
+    <!-- Address -->
+    <div class="flex flex-col px-12 py-2">
+      <h1 class="text-xl font-roboto font-medium text-primary-off-white">ADDRESS</h1>
+      <input
+        formControlName="address"
+        type="text"
+        placeholder="Some text here"
+        class="w-[420px] py-4 mt-3 text-primary-off-white px-5 bg-primary-lighter-gray rounded-lg focus:ring-2 focus:ring-secondary-purple focus:outline-none focus:border-transparent"
+      />
+    </div>
+    <!-- Actions -->
+    <div class="flex justify-between px-12 mt-12 border-t border-primary-lighter-gray pt-6 pb-8">
+      <button (click)="onClose()">Discard</button>
+      <button (click)="handleSubmit()">Save</button>
+    </div>
+  </form>
+</div>
