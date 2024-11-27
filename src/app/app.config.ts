@@ -22,5 +22,6 @@ export const appConfig: ApplicationConfig = {
       BrowserAnimationsModule,
       MatFormFieldModule,
       MatInputModule,)
-  ]
+  ],
+  
 };

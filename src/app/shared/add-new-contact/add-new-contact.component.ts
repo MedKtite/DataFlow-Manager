@@ -4,15 +4,20 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PhoneNumberComponent } from '../phone-number/phone-number.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { EmailInputComponent } from '../emailnput/emailnput.component';
 
 
 @Component({
   selector: 'app-add-new-contact',
-  imports: [ReactiveFormsModule, 
+  standalone: true,
+  imports: [
+    ReactiveFormsModule, 
     CommonModule,
     MatFormFieldModule,
     PhoneNumberComponent,
-    MatInputModule ],
+    MatInputModule,
+    EmailInputComponent,
+  ],
   templateUrl: './add-new-contact.component.html',
   styleUrl: './add-new-contact.component.scss'
 })

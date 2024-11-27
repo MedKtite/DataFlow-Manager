@@ -1,20 +1,28 @@
 .phone-number-input {
+    margin-top: 10px;
   display: flex;
   align-items: center;
 
   select {
-    color: #000;
+    color: #FAFAFB;
+    background: #282828 ;
     margin-right: 8px;
-    padding: 4px;
+    padding: 13px 4px 13px 4px ;
+    border-radius: 5px;
 
     option {
-      color: #000;
+        padding: 2px;
+        background: #282828 ;
+        color: #FAFAFB;
     }
   }
 
   input {
-    color: #000;
+    margin-left: -5px;
+    color: #FAFAFB;
+    background: #282828 ;
     flex: 1;
-    padding: 4px;
+    padding: 12px 4px 12px 4px;
+    border-radius: 5px;
   }
 }

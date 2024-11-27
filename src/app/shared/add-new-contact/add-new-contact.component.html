@@ -1,4 +1,4 @@
-<div class="absolute h-screen overflow-y-auto -top-8 -right-[15px] bg-primary-dark-slate my-4 border border-primary-lighter-gray">
+<div class="absolute h-screen overflow-y-auto -top-12 -right-8 bg-primary-dark-slate my-4 border border-primary-lighter-gray">
   <div id="header" class="flex gap-12 border-b border-primary-lighter-gray px-12 py-6">
     <h1 class="flex gap-4 items-center font-roboto text-primary-off-white font-medium text-3xl">
       <i class="uil uil-dot-circle text-2xl"></i> Create a contact
@@ -31,12 +31,7 @@
     <!-- Email -->
     <div class="flex flex-col px-12 py-2">
       <h1 class="text-xl font-roboto font-medium text-primary-off-white">EMAIL</h1>
-      <input
-        formControlName="email"
-        type="text"
-        placeholder="Enter the email address"
-        class="w-[420px] py-4 mt-3 text-primary-off-white px-5 bg-primary-lighter-gray rounded-lg focus:ring-2 focus:ring-secondary-purple focus:outline-none focus:border-transparent"
-      />
+      <app-email-input></app-email-input>
     </div>
     <!-- Phone -->
     <div class="flex flex-col px-12 py-2">
