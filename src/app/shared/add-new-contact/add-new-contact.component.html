@@ -43,10 +43,11 @@
       <h1 class="text-xl font-roboto font-medium text-primary-off-white">WHATSAPP</h1>
       <app-phone-number formControlName="whatsApp"></app-phone-number>
     </div>
-    <!-- Country & City -->
+    
     <div class="flex flex-col px-12 py-2">
       <h1 class="text-xl font-roboto font-medium text-primary-off-white">COUNTRY & CITY</h1>
-      <!-- <app-country-city></app-country-city> -->
+      <input type="text" placeholder="Enter the country" class="w-[420px] py-4 mt-3 text-primary-off-white px-5 bg-primary-lighter-gray rounded-lg focus:ring-2 focus:ring-secondary-purple focus:outline-none focus:border-transparent">
+      <input type="text" placeholder="Enter the city" class="w-[420px] py-4 mt-3 text-primary-off-white px-5 bg-primary-lighter-gray rounded-lg focus:ring-2 focus:ring-secondary-purple focus:outline-none focus:border-transparent">
     </div>
     <!-- Address -->
     <div class="flex flex-col px-12 py-2">
@@ -60,8 +61,9 @@
     </div>
     <!-- Actions -->
     <div class="flex justify-between px-12 mt-12 border-t border-primary-lighter-gray pt-6 pb-8">
-      <button (click)="onClose()">Discard</button>
-      <button (click)="handleSubmit()">Save</button>
+      <button (onClick)="onClose() "  class="relative flex gap-2 items-center px-4 py-2 rounded-lg bg-primary-dark-blue text-secondary-hade-blue hover:bg-secondary-purple hover:text-primary-off-white">
+        Save
+      </button>
     </div>
   </form>
 </div>
