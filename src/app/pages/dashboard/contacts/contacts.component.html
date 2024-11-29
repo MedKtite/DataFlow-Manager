@@ -1,6 +1,6 @@
-<div class="relative p-8 h-screen flex">
-  <div class="flex-1" > 
-    <!-- [ngClass]="{ 'blur-background': isOpened }" -->
+<div class="relative p-8  flex">
+  <div class="flex-1" [ngClass]="{ 'blur-background': isOpened }" > 
+    <div *ngIf="!isChildRouteActive()">
     <div class="flex justify-between items-center">
       <h1 class="text-primary-off-white text-3xl font-poppins font-semibold">Contacts</h1>
       <div class="flex gap-3">
@@ -101,4 +101,6 @@
     </div>
   </div>
   <app-add-new-contact *ngIf="isOpened" (close)="toggleAddNewContact()"></app-add-new-contact>
+  <router-outlet></router-outlet>
+  </div>
 </div>

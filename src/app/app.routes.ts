@@ -1,3 +1,4 @@
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CampaignsComponent } from './pages/dashboard/campaigns/campaigns.component';
@@ -14,31 +15,40 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/home/about/about.component';
 
 export const routes: Routes = [
-    {
-      path: '',
-      component: HomeComponent,
-      children: [
-        { path: 'about', component: AboutComponent },
-      ]
-      
-    },
-   {
-      path: 'dashboard',
-      component: DashboardComponent,
-      children: [
-        { path: 'contacts', component: ContactsComponent, children: [
-          { path: 'lists', component: ListsComponent },
+  {
+    path: '',
+    component: HomeComponent,
+    children: [
+      { path: 'about', component: AboutComponent },
+    ]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'contacts',
+        component: ContactsComponent,
+        children: [
+          {
+          path: 'lists', 
+          component: ListsComponent
+          },
         ]
-        },
-        { path: 'campaigns', component: CampaignsComponent, children: [
+      },
+      {
+        path: 'campaigns',
+        component: CampaignsComponent,
+        children: [
           { path: 'emails', component: EmailsComponent },
           { path: 'sms', component: SmsComponent },
           { path: 'whatsapp', component: WhatsappComponent },
-        ]},
-        { path: 'templates', component: TemplatesComponent },
-        { path: 'conversation', component: ConversationsComponent },
-        { path: 'web-scraping', component: WebScrapingComponent },
-        { path: 'reports', component: ReportComponent },
-      ]
-    },
+        ]
+      },
+      { path: 'templates', component: TemplatesComponent },
+      { path: 'conversation', component: ConversationsComponent },
+      { path: 'web-scraping', component: WebScrapingComponent },
+      { path: 'reports', component: ReportComponent },
+    ]
+  },
 ];
