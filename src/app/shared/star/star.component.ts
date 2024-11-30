@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-star',
@@ -9,5 +9,12 @@ import { Component, Input } from '@angular/core';
 })
 export class StarComponent {
   @Input() subscription: boolean = false;
+  @Output() subscriptionChange = new EventEmitter<boolean>();
+
+  toggleSubscription() {
+    this.subscription = !this.subscription;
+    this.subscriptionChange.emit(this.subscription);
+    localStorage.setItem('starSubscription', JSON.stringify(this.subscription));
+  }
 
 }

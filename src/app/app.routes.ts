@@ -1,4 +1,4 @@
-// src/app/app.routes.ts
+
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CampaignsComponent } from './pages/dashboard/campaigns/campaigns.component';
@@ -30,10 +30,7 @@ export const routes: Routes = [
         path: 'contacts',
         component: ContactsComponent,
         children: [
-          {
-          path: 'lists', 
-          component: ListsComponent
-          },
+          { path: 'lists', component: ListsComponent },
         ]
       },
       {

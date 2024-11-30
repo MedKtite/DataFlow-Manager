@@ -1,7 +1,7 @@
 <div class="relative">
   <!-- Create New List -->
   <div class="flex justify-center items-center absolute inset-0 z-40 top-56">
-    <!-- <app-create-new-list *ngIf="isOpened" (close)="toggleCreateNewList()"></app-create-new-list> -->
+    <app-create-new-list *ngIf="isOpened" (close)="toggleCreateNewList()"></app-create-new-list>
   </div>
   <div class="flex justify-between items-center">
     <h1 class="text-primary-off-white text-3xl font-poppins font-semibold">Contacts - Lists</h1>
@@ -63,14 +63,14 @@
           </td>
           <!-- Actions -->
           <td class="px-6 py-4">
-            <div class="flex gap-4">
+            <div class="flex gap-4 items-center">
               <button class="flex gap-2 items-center bg-primary-dark-blue text-secondary-hade-blue px-3 py-2 rounded-lg">
                 <i class="uil uil-edit"></i> Edit
               </button>
               <button class="flex gap-2 items-center bg-primary-dark-blue text-secondary-hade-blue px-3 py-2 rounded-lg">
                 <i class="uil uil-trash-alt"></i> Delete
               </button>
-              <!-- <app-star [isFilled]="true"></app-star> -->
+              <app-star [subscription]="true"></app-star>
             </div>
           </td>
         </tr>
