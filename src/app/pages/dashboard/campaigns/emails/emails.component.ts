@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SelectTemplateComponent } from '../../../../shared/select-template/select-template.component';
 
 
@@ -12,6 +12,12 @@ import { SelectTemplateComponent } from '../../../../shared/select-template/sele
   styleUrl: './emails.component.scss'
 })
 export class EmailsComponent {
+  constructor(private router: Router) {   
+  }
+  isChildRouteActive(): boolean {
+    return this.router.url.includes('/dashboard/campaigns/emails/template');
+  }
+
   isOpened = false;
 
   toggleSelectTemplate() {

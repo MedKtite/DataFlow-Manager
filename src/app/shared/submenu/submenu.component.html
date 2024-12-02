@@ -4,5 +4,5 @@
   <i class="uil uil-angle-down text-3xl mt-1 ml-auto" [ngClass]="{'rotate-180': isOpen, 'rotate-0': !isOpen}"></i>
 </li>
 <ul *ngIf="isOpen" class="ml-10 mt-3 flex flex-col gap-4">
-  <ng-content></ng-content>
+  <ng-content *ngIf="isOpen!"></ng-content>
 </ul>

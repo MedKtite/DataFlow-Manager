@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CampaignsComponent } from './pages/dashboard/campaigns/campaigns.component';
 import { ContactsComponent } from './pages/dashboard/contacts/contacts.component';
-import { TemplatesComponent } from './pages/dashboard/templates/templates.component';
+import { TemplateComponent } from './pages/dashboard/campaigns/emails/template/template.component';
 import { ConversationsComponent } from './pages/dashboard/conversations/conversations.component';
 import { WebScrapingComponent } from './pages/dashboard/web-scraping/web-scraping.component';
 import { ReportComponent } from './pages/dashboard/report/report.component';
@@ -37,12 +37,14 @@ export const routes: Routes = [
         path: 'campaigns',
         component: CampaignsComponent,
         children: [
-          { path: 'emails', component: EmailsComponent },
+          { path: 'emails', component: EmailsComponent,
+            children: [ 
+              {path: 'template', component: TemplateComponent}
+           ]},
           { path: 'sms', component: SmsComponent },
           { path: 'whatsapp', component: WhatsappComponent },
         ]
       },
-      { path: 'templates', component: TemplatesComponent },
       { path: 'conversation', component: ConversationsComponent },
       { path: 'web-scraping', component: WebScrapingComponent },
       { path: 'reports', component: ReportComponent },

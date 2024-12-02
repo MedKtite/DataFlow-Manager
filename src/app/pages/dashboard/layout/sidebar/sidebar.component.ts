@@ -9,7 +9,6 @@ import { SubmenuComponent } from '../../../../shared/submenu/submenu.component';
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  standalone: true,
   imports: [CommonModule, RouterModule, SubmenuComponent]
 })
 export class SidebarComponent {

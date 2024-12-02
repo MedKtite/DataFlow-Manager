@@ -7,7 +7,7 @@
       </li>
       <app-submenu [icon]="'uil-user-plus'" [title]="'Contact'" [link]="'/dashboard/contacts'" [isOpen]="openSubmenu === 'contact'" (toggle)="toggleSubmenu('contact')">
         <li class="text-primary-light-gray poppins-regular text-lg hover:text-primary-off-white">
-          <a href="/dashboard/contacts/lists">Lists</a>
+          <a href="/dashboard/contacts/lists" class="active:text-primary-off-white ">Lists</a>
         </li>
       </app-submenu>
       <app-submenu [icon]="' uil-megaphone'" [title]="'Campaigns'" [link]="'/dashboard/campaigns'" [isOpen]="openSubmenu === 'campaigns'" (toggle)="toggleSubmenu('campaigns')">
