@@ -12,7 +12,7 @@ export class CampaignsComponent {
   constructor(private router: Router) {   
   }
   isChildRouteActive(): boolean {
-    return this.router.url.includes('/dashboard/campaigns/emails');
+    return this.router.url.includes('/dashboard/campaigns/emails')
   }
 
   isDropDownVisible = false;

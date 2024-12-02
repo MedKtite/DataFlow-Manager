@@ -1,13 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { EmailEditorComponent, EmailEditorModule } from 'angular-email-editor';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-template',
-  standalone: true,
   imports: [CommonModule, EmailEditorModule],
   templateUrl: './template.component.html',
-  styleUrls: ['./template.component.scss']
+  styleUrls: ['./template.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TemplateComponent {
   @ViewChild('emailEditor') emailEditor!: EmailEditorComponent;

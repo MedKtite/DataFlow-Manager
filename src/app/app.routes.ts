@@ -13,6 +13,8 @@ import { SmsComponent } from './pages/dashboard/campaigns/sms/sms.component';
 import { WhatsappComponent } from './pages/dashboard/campaigns/whatsapp/whatsapp.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/home/about/about.component';
+import { AuthGuard } from './core/guards/auth.guard';
+
 
 export const routes: Routes = [
   {
@@ -25,6 +27,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'contacts',
@@ -37,10 +40,12 @@ export const routes: Routes = [
         path: 'campaigns',
         component: CampaignsComponent,
         children: [
-          { path: 'emails', component: EmailsComponent,
-            children: [ 
-              {path: 'template', component: TemplateComponent}
-           ]},
+          { path: 'emails', 
+            component: EmailsComponent,
+            children: [
+              { path: 'template', component: TemplateComponent },
+            ]
+          },
           { path: 'sms', component: SmsComponent },
           { path: 'whatsapp', component: WhatsappComponent },
         ]

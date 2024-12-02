@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { faBell, faUser, faCog, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { DropdownComponent } from '../../../../shared/dropdown/dropdown.component';
+import { DropdownComponent } from '../../../../shared/components/dropdown/dropdown.component';
 
 
 @Component({

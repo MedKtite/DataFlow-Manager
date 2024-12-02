@@ -1,7 +1,7 @@
 // src/app/pages/dashboard/contacts/contacts.component.ts
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AddNewContactComponent } from '../../../shared/add-new-contact/add-new-contact.component';
+import { AddNewContactComponent } from '../../../shared/components/add-new-contact/add-new-contact.component';
 import { RouterModule, Router } from '@angular/router';
 
 @Component({
