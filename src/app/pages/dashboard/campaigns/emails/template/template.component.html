@@ -3,7 +3,11 @@
     <button (click)="goBack()" class="back-btn">
       <i class="uil uil-arrow-left"></i> Back
     </button>
-    <button (click)="exportHtml()" class="export-btn">Export</button>
+    <div class="flex gap-4 items-center">
+      <button (click)="exportHtml()" class="export-btn">Save</button>
+      <button class="export-btn">Test sending</button>
+    </div>
+
   </div>
   <div class="editor-container">
     <email-editor
