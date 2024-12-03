@@ -5,7 +5,7 @@
      [class.hidden]="isCollapsed"
      [routerLink]="link">{{ title }}</a>
   <i *ngIf="!isCollapsed" 
-     class="uil uil-angle-down text-3xl mt-1 ml-auto transition-transform" 
+     class="uil uil-angle-down text-3xl mt-1 transition-transform" 
      [ngClass]="{'rotate-180': isOpen, 'rotate-0': !isOpen}"></i>
 </li>
 <ul *ngIf="isOpen && !isCollapsed" 
