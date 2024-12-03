@@ -12,11 +12,16 @@ import { SubmenuComponent } from '../../../../shared/submenu/submenu.component';
   imports: [CommonModule, RouterModule, SubmenuComponent]
 })
 export class SidebarComponent {
+  isCollapsed = true;
   openSubmenu: string | null = null; 
 
 
   toggleSubmenu(submenu: string) {
     this.openSubmenu = this.openSubmenu === submenu ? null : submenu;
+}
+
+toggleSidebar() {
+  this.isCollapsed = !this.isCollapsed;
 }
 
 }

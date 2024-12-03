@@ -1,12 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-submenu',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FontAwesomeModule], 
+  imports: [CommonModule, RouterModule], 
   templateUrl: './submenu.component.html',
   styleUrls: ['./submenu.component.scss']
 })
@@ -15,9 +13,12 @@ export class SubmenuComponent {
   @Input() link!: string;
   @Input() icon!: string; 
   @Input() isOpen = false;
-  @Output() toggle= new EventEmitter<void>();
+  @Input() isCollapsed = false;
+  @Output() toggle = new EventEmitter<void>();
 
   toggleSubmenu() {
-    this.toggle.emit();
+    if (!this.isCollapsed) {
+      this.toggle.emit();
+    }
   }
 }
