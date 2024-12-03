@@ -1,9 +1,13 @@
-<div [class.collapsed]="isCollapsed" class='sidebar w-[210px] h-screen flex flex-col text-start items-center bg-primary-dark-slate border-r border-primary-lighter-gray'>
+<div 
+[class.collapsed]="isCollapsed"
+(mouseenter)="onMouseEnter()" 
+(mouseleave)="onMouseLeave()"
+ class='sidebar w-[210px] h-screen flex flex-col text-start items-center bg-primary-dark-slate border-r border-primary-lighter-gray'>
   <div id="menu" class="flex items-center mt-12">
     <ul class="flex flex-col items-start gap-8">
-      <li class="text-primary-light-gray flex gap-3 items-center poppins-semi-bold text-sm hover:text-primary-off-white">
+      <li class="text-primary-light-gray flex gap-3 items-center poppins-semi-bold text-sm hover:text-primary-off-white active:text-primary-off-white">
         <i class="uil uil-tachometer-fast text-2xl text-primary-light-gray"></i>
-        <a class="text-lg poppins-regular transition-opacity" [class.hidden]="isCollapsed">Overview</a>
+        <a class="text-lg poppins-regular transition-opacity" [class.hidden]="isCollapsed" href="/dashboard">Overview</a>
       </li>
       <app-submenu [icon]="'uil-user-plus'" [title]="'Contact'" [link]="'/dashboard/contacts'" [isOpen]="openSubmenu === 'contact'" (toggle)="toggleSubmenu('contact')" [isCollapsed]="isCollapsed">
         <li class="text-primary-light-gray poppins-regular text-lg hover:text-primary-off-white">
@@ -39,7 +43,7 @@
       </li>
     </ul>
   </div>
-  <button class="toggle-btn text-white text-2xl absolute bottom-8 -right-3" (click)="toggleSidebar()">
+  <button class="toggle-btn text-white text-2xl absolute bottom-8 left-4 " (click)="toggleSidebar()">
     <i class="uil" [class.uil-angle-double-left]="!isCollapsed" [class.uil-angle-double-right]="isCollapsed"></i>
   </button>
 </div>

@@ -21,7 +21,16 @@ export class SidebarComponent {
 }
 
 toggleSidebar() {
+
   this.isCollapsed = !this.isCollapsed;
+}
+
+onMouseEnter() {
+  this.isCollapsed = false;
+}
+
+onMouseLeave() {
+  this.isCollapsed = true;
 }
 
 }

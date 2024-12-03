@@ -29,5 +29,9 @@
 }
 
 .collapsed .toggle-btn {
-  transform: rotate(180deg);
+  &.collapsed {
+    transform: rotate(180deg);
+    transition: transform 3s ease;
+  }
+
 }
