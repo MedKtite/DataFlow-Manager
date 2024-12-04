@@ -19,6 +19,10 @@ import { SecurityComponent } from './user/security/security.component';
 import { PlansComponent } from './user/plans/plans.component';
 import { SendersDomainsComponent } from './user/senders-domains/senders-domains.component';
 import { SMTPAPIComponent } from './user/smtp-api/smtp-api.component';
+import { PasswordComponent } from './user/password/password.component';
+import { UserComponent } from './user/user/user.component';
+
+
 
 
 export const routes: Routes = [
@@ -58,13 +62,15 @@ export const routes: Routes = [
       { path: 'reports', component: ReportComponent },
       {
         path: 'user',
-        component: ProfileComponent,
+        component: UserComponent,
         children: [
+          {path: 'profile', component: ProfileComponent},
           { path: 'settings', component: SettingComponent },
           { path: 'security', component: SecurityComponent },
           { path: 'plans', component: PlansComponent },
           { path: 'senders-domains', component: SendersDomainsComponent },
-          { path: 'smtpl-api', component: SMTPAPIComponent }
+          { path: 'smtpl-api', component: SMTPAPIComponent },
+          {path: 'password', component: PasswordComponent}
         ]
     
       }
