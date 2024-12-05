@@ -13,6 +13,12 @@ import { SmsComponent } from './pages/dashboard/campaigns/sms/sms.component';
 import { WhatsappComponent } from './pages/dashboard/campaigns/whatsapp/whatsapp.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/home/about/about.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { SettingComponent } from './user/setting/setting.component';
+import { SecurityComponent } from './user/security/security.component';
+import { PlansComponent } from './user/plans/plans.component';
+import { SendersDomainsComponent } from './user/senders-domains/senders-domains.component';
+import { SMTPAPIComponent } from './user/smtp-api/smtp-api.component';
 
 
 export const routes: Routes = [
@@ -39,15 +45,9 @@ export const routes: Routes = [
         path: 'campaigns',
         component: CampaignsComponent,
         children: [
-          { path: 'emails', 
-            component: EmailsComponent,
+          { path: 'emails', component: EmailsComponent,
             children: [
-              { path: 'template', 
-                component: TemplateComponent,
-                data: {
-                  skipLayout: true
-                }
-              },
+              { path: 'template', component: TemplateComponent,data: { skipLayout: true} },
             ]
           },
           { path: 'sms', component: SmsComponent },
@@ -57,6 +57,18 @@ export const routes: Routes = [
       { path: 'conversation', component: ConversationsComponent },
       { path: 'web-scraping', component: WebScrapingComponent },
       { path: 'reports', component: ReportComponent },
+      {
+        path: 'user',
+        component: ProfileComponent,
+        children: [
+          { path: 'settings', component: SettingComponent },
+          { path: 'security', component: SecurityComponent },
+          { path: 'plans', component: PlansComponent },
+          { path: 'senders-domains', component: SendersDomainsComponent },
+          { path: 'smtpl-api', component: SMTPAPIComponent }
+        ]
+    
+      }
     ]
   },
 ];
