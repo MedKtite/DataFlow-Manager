@@ -1,0 +1,72 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Angular
+dist/
+out-tsc/
+coverage/
+.angular/cache/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Spring Boot
+target/
+!src/main/resources/static/**/target/
+
+# Maven
+.mvn/
+!**/src/main/**/mvnw*
+!**/src/main/**/mvnw.cmd
+!**/src/main/**/mvn/
+!**/src/main/**/target/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse
+.project
+.classpath
+.c9/
+.settings/
+*.launch
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
