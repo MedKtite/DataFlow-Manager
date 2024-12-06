@@ -1,0 +1,13 @@
+<div *ngIf="isVisible" class="absolute flex flex-col items-center gap-6 left-[720px] top-[320px] z-40 bg-primary-dark-slate rounded-lg py-8 px-14">
+  <h1 class="text-3xl text-primary-off-white font-poppins font-medium">Email Sending Failed</h1>
+  <div class="flex flex-col gap-2 items-center">
+    <img src="/DataFlow-Manager//src/assets/Notifications/Failed.svg" width="40px" alt="Sending Failed" />
+    <p class="text-secondary-success font-poppins font-medium">There was an error sending your email.</p>
+    <p class="text-primary-light-gray font-poppins font-normal text-sm">Please try again later.</p>
+  </div>
+  <div class="flex justify-between w-full">
+    <button (click)="handleClose()" class="relative flex gap-2 items-center px-4 py-2 rounded-lg  text-secondary-hade-blue hover:bg-primary-dark-blue hover:text-primary-off-white">Discard</button>
+    <button class="relative flex gap-2 items-center px-4 py-2 rounded-lg bg-primary-dark-blue text-secondary-hade-blue hover:bg-secondary-purple hover:text-primary-off-white">Try again</button>
+  </div>
+
+</div>

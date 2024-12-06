@@ -1,0 +1,15 @@
+<div class=" create-new-list-container p-12 border text-center border-primary-lighter-gray rounded-lg bg-primary-dark-slate flex flex-col gap-8 items-center justify-center">
+  <h1 class="text-5xl text-primary-off-white font-semibold">Create a new list</h1>
+  <p class="text-sm text-primary-light-gray">Create a new contact list for your campaigns. Use this list to manage and organize your contacts effectively.</p>
+  <input class="flex px-4 py-3 w-[520px] rounded-md bg-primary-lighter-gray text-primary-off-white focus:ring-secondary-purple focus:outline-none focus:border-transparent" 
+         type="text" 
+         placeholder="Enter the list name" />
+  <div class="flex mt-8 gap-[520px] text-center">
+    <button (click)="onClose()" class="relative flex gap-2 items-center px-4 py-2 rounded-lg  text-secondary-hade-blue hover:bg-secondary-purple hover:text-primary-off-white">
+        Discard
+      </button>
+      <button (onClick)="handleSubmit()"  class="relative flex gap-2 items-center px-4 py-2 rounded-lg bg-primary-dark-blue text-secondary-hade-blue hover:bg-secondary-purple hover:text-primary-off-white">
+        Save
+      </button>
+  </div>
+</div>
