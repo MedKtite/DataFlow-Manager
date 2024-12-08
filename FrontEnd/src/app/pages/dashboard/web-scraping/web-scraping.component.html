@@ -1,1 +1,81 @@
-<p>web-scraping works!</p>
+<!-- src/app/web-scraping/web-scraping.component.html -->
+<div class="relative p-8">
+  <div class="flex justify-between w-full">
+    <h1 class="text-primary-off-white text-3xl font-poppins font-semibold">Web Scraping</h1>
+  </div>
+
+  <div class="flex flex-col w-[1200px] ml-14 mt-8 bg-primary-dark-slate rounded-lg">
+    <!-- Target -->
+    <div class="flex flex-col gap-4 border-b border-primary-lighter-gray p-8">
+      <div class="flex gap-6 items-center text-primary-off-white text-2xl font-poppins font-medium">
+        <i class="icon-dot-circle text-xl"></i>
+        Target Websites
+      </div>
+      <p class="text-primary-off-white font-poppins font-medium text-lg">Enter the URLs of the websites to scrape.</p>
+      <div class="flex flex-col gap-2">
+        <input type="text" placeholder="Enter website URLs" class="w-[720px] py-3 px-4 text-primary-off-white bg-primary-lighter-gray rounded-lg focus:ring-secondary-purple focus:outline-none focus:border-transparent" />
+        <p class="text-primary-light-gray font-roboto font-normal text-sm">Separate URLs with commas for multiple entries.</p>
+      </div>
+    </div>
+    <!-- Industries -->
+    <div class="flex flex-col gap-4 p-8 border-b border-primary-lighter-gray">
+      <div class="flex gap-6 items-center text-primary-off-white text-2xl font-poppins font-medium">
+        <i class="icon-dot-circle text-xl"></i>
+        Industries
+      </div>
+      <p class="text-primary-off-white font-poppins font-medium text-lg">Choose industries from the list below.</p>
+      <div class="flex flex-col gap-2">
+        <select class="w-[720px] py-3 px-4 text-primary-off-white bg-primary-lighter-gray rounded-lg focus:ring-secondary-purple focus:outline-none focus:border-transparent">
+          <option value="">Finance</option>
+          <option value="">Economic</option>
+        </select>
+        <p class="text-primary-light-gray font-roboto font-normal text-sm">You can select one or more industries.</p>
+      </div>
+    </div>
+    <!-- Location -->
+    <div class="flex flex-col gap-4 p-8 border-b border-primary-lighter-gray">
+      <div class="flex gap-6 items-center text-primary-off-white text-2xl font-poppins font-medium">
+        <i class="icon-ellipse text-xl"></i>
+        Location
+      </div>
+      <p class="text-primary-off-white font-poppins font-medium text-lg">Choose country and city.</p>
+      <div class="flex flex-col gap-2">
+        <!-- <app-country-city></app-country-city> -->
+        <p class="text-primary-light-gray font-roboto font-normal text-sm">Select the geographical location to scrape data from.</p>
+      </div>
+    </div>
+    <!-- Data Extraction -->
+    <div class="flex flex-col gap-4 p-8">
+      <div class="flex gap-6 items-center text-primary-off-white text-2xl font-poppins font-medium">
+        <i class="icon-dot-circle text-xl"></i>
+        Data Extraction
+      </div>
+      <p class="text-primary-off-white font-poppins font-medium text-lg">Select the type of data you want to extract.</p>
+      <div class="flex flex-col gap-2">
+        <!-- <app-country-city></app-country-city> -->
+        <p class="text-primary-light-gray font-roboto font-normal text-sm">Select the geographical location to scrape data from.</p>
+      </div>
+      <div class="flex gap-6">
+        <!-- Email check -->
+        <div id="Email-check" class="flex gap-2 items-center bg-primary-dark-blue py-1 px-2 rounded-md cursor-pointer" (click)="toggleCheckbox('email-checkbox')">
+          <input id="email-checkbox" type="checkbox" class="w-[15px] h-[15px] appearance-none rounded-full bg-primary-lighter-gray checked:bg-secondary-purple border-primary-off-white" />
+          <p class="font-roboto font-normal text-sm text-secondary-hade-blue">Email</p>
+        </div>
+        <!-- Phone check -->
+        <div id="Phone-check" class="flex gap-2 items-center bg-primary-dark-blue py-1 px-2 rounded-md cursor-pointer" (click)="toggleCheckbox('phone-checkbox')">
+          <input id="phone-checkbox" type="checkbox" class="w-[15px] h-[15px] appearance-none rounded-full bg-primary-lighter-gray checked:bg-secondary-purple border-primary-off-white" />
+          <p class="font-roboto font-normal text-sm text-secondary-hade-blue">Phone number</p>
+        </div>
+        <!-- Address check -->
+        <div id="Address-check" class="flex gap-2 items-center bg-primary-dark-blue py-1 px-2 rounded-md cursor-pointer" (click)="toggleCheckbox('address-checkbox')">
+          <input id="address-checkbox" type="checkbox" class="w-[15px] h-[15px] appearance-none rounded-full bg-primary-lighter-gray checked:bg-secondary-purple border-primary-off-white" />
+          <p class="font-roboto font-normal text-sm text-secondary-hade-blue">Address</p>
+        </div>
+      </div>
+      <div class="mt-12 flex justify-between">
+        <button colorClass="text-primary-light-gray hover:bg-primary-lighter-gray">Discard</button>
+        <button>Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
