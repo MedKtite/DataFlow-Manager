@@ -1,22 +1,23 @@
 package dataflow.server.dto;
 
-
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-@lombok.Getter
-@lombok.Setter
-@lombok.Data
+@Entity
 @Table(name = "contact_list")
+@Getter
+@Setter
 public class ContactList {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String listName;
-    private List<Contact> contacts;
 
-    public ContactList() {
-        this.listName = "My Contact List";
-        this.contacts= new ArrayList<>();
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "contact_list_id")
+    private List<Contact> contacts = new ArrayList<>();
 }
