@@ -1,4 +1,3 @@
-
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CampaignsComponent } from './pages/dashboard/campaigns/campaigns.component';
@@ -21,6 +20,7 @@ import { SendersDomainsComponent } from './user/senders-domains/senders-domains.
 import { SMTPAPIComponent } from './user/smtp-api/smtp-api.component';
 import { PasswordComponent } from './user/password/password.component';
 import { UserComponent } from './user/user/user.component';
+import { AuthGuard } from './auth/core/guards/auth.guard';
 
 
 
@@ -36,6 +36,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard], // Protect the Dashboard page
     children: [
       {
         path: 'contacts',
