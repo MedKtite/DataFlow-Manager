@@ -1,10 +1,13 @@
 package dataflow.server.controller;
 
-
 import dataflow.server.dto.User;
 import dataflow.server.service.UserService;
+import org.keycloak.KeycloakPrincipal;
+import org.keycloak.representations.AccessToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,27 +23,40 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Get all users
+    private AccessToken getCurrentUserToken(Authentication authentication) {
+        KeycloakPrincipal<?> principal = (KeycloakPrincipal<?>) authentication.getPrincipal();
+        return principal.getKeycloakSecurityContext().getToken();
+    }
+
     @GetMapping
+    @PreAuthorize("hasRole('admin')")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    // Get user by id
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        return userService.getUserById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @PreAuthorize("hasRole('admin') or #id == principal.claims['sub']")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user, Authentication authentication) {
+        AccessToken token = getCurrentUserToken(authentication);
+        String keycloakUserId = token.getSubject();
+
+        if (!id.toString().equals(keycloakUserId) && !token.getRealmAccess().isUserInRole("admin")) {
+            return ResponseEntity.status(403).build();
+        }
+
+        try {
+            User updatedUser = userService.updateUser(id, user);
+            return ResponseEntity.ok(updatedUser);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    // Create user
     @PostMapping
     public User createUser(User user) {
         return userService.createUser(user);
     }
 
-    // Update user
     @PostMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         try {
@@ -51,11 +67,9 @@ public class UserController {
         }
     }
 
-    // Delete user
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
-
 }
