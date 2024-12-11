@@ -1,1 +1,117 @@
-<p>sing-up works!</p>
+<div class="flex h-screen bg-black text-primary-off-white place-items-center justify-center gap-56">
+  <!-- Logo & text -->
+  <div class="flex flex-col gap-4 text-center align-middle">
+    <h1 class="font-sans text-3xl font-medium">
+      <span class="font-bold text-4xl text-secondary-purple">L</span>
+      ink<span class="font-bold text-4xl text-secondary-purple">W</span>ave
+    </h1>
+    <h1 class="text-h1 font-sans font-normal text-primary-off-white text-center">
+      One tool for your<br /> whole team needs
+    </h1>
+  </div>
+
+  <!-- Sign Up Card -->
+  <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()" class="px-8 py-8 bg-primary-off-white rounded-[32px]">
+    <h3 class="flex justify-start font-sans text-primary-Dark-gray text-4xl font-medium">Sign Up</h3>
+    <div class="flex justify-start mt-4 gap-1 text-primary-Dark-gray font-sans font-medium">
+      <p>Already have an account?</p>
+      <a routerLink="/login" class="hover:text-secondary-purple transition duration-300 ease-in-out">
+        Sign in
+      </a>
+    </div>
+
+    <!-- Email Address -->
+    <div class="flex justify-center relative mt-6">
+      <label for="email" class="absolute text-xs font-normal px-1 -top-3 left-4 bg-gradient-to-b from-primary-off-white to-white text-primary-light-gray">
+        Email Address
+      </label>
+      <input
+        id="email"
+        formControlName="email"
+        class="h-[48px] w-[393px] text-primary-Dark-gray bg-white rounded-xl border border-[#bbb7c3] p-3"
+        type="text"
+        placeholder="email@gmail.com"
+      />
+    </div>
+    <p *ngIf="emailError" class="text-secondary-danger">{{ emailError }}</p> <!-- Error Message -->
+
+    <!-- First Name & Last Name -->
+    <div class="flex gap-[15px] mt-6 justify-center">
+      <input
+        id="firstName"
+        formControlName="firstName"
+        class="h-[48px] w-[189px] text-primary-Dark-gray bg-white rounded-xl border border-[#bbb7c3] p-3"
+        type="text"
+        placeholder="First Name"
+      />
+      <input
+        id="lastName"
+        formControlName="lastName"
+        class="h-[48px] w-[189px] text-primary-Dark-gray bg-white rounded-xl border border-[#bbb7c3] p-3"
+        type="text"
+        placeholder="Last Name"
+      />
+    </div>
+
+    <!-- Password -->
+    <div class="flex justify-center relative mt-6">
+      <input
+        id="password"
+        formControlName="password"
+        class="h-[48px] w-[393px] text-primary-Dark-gray bg-white rounded-xl border border-[#bbb7c3] p-3"
+        type="password"
+        placeholder="Password"
+      />
+    </div>
+
+    <!-- Sign Up Button -->
+    <div class="flex mt-[38px] gap-[104px] justify-center text-center">
+      <button
+        class="btn btn-primary"
+        [disabled]="isSubmitting"
+        type="submit"
+      >
+        {{ isSubmitting ? 'Signing Up...' : 'Sign Up' }}
+      </button>
+    </div>
+
+    <!-- Check Box -->
+    <div class="flex mt-6 gap-2 items-start justify-center">
+      <input
+        id="isCheckedAgreement"
+        formControlName="isCheckedAgreement"
+        type="checkbox"
+      />
+      <p class="w-[393px] font-sans text-primary-light-gray text-xs">
+        By clicking Create account, I agree that I have read and accepted the Terms of Use and Privacy Policy.
+      </p>
+    </div>
+
+    <!-- Divider -->
+    <div class="flex items-center justify-center gap-3 mt-6">
+      <div class="w-[177px] h-px bg-[#dbdadd]" ></div>
+      <p class="text-primary-light-gray font-sans text-sm font-normal">OR</p>
+      <div class="w-[177px] h-px bg-[#dbdadd]" ></div>
+    </div>
+
+    <!-- Providers -->
+    <div class="flex items-center mt-6 justify-center gap-[15px]">
+      <button class="btn btn-facebook">
+        <i class="icon-facebook"></i> Facebook
+      </button>
+      <button class="btn btn-google">
+        <i class="icon-google"></i> Google
+      </button>
+    </div>
+
+    <!-- reCAPTCHA -->
+    <div class="flex-col w-[385px] mt-6">
+      <span class="text-primary-light-gray text-xs font-normal font-sans leading-[17px]">
+        Protected by reCAPTCHA and subject to the
+      </span>
+      <span class="text-secondary-purple text-xs font-normal font-sans">Cuboid Privacy Policy</span>
+      <span class="text-primary-light-gray text-xs font-normal font-sans"> and </span>
+      <span class="text-secondary-purple text-xs font-normal font-sans leading-[17px]">Terms of Service.</span>
+    </div>
+  </form>
+</div>

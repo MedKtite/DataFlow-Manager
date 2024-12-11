@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  register(email: any, password: any, firstName: any, lastName: any) {
+    throw new Error('Method not implemented.');
+  }
 
-
-  router: any;
-
-  constructor(private keycloakService: KeycloakService) {}
+  constructor(private keycloakService: KeycloakService, private router: Router) {}
 
   async init() {
     await this.keycloakService.init({
@@ -51,5 +52,5 @@ export class AuthService {
   
   isLoggedIn(): boolean {
     return this.keycloakService.isLoggedIn();
-  }
+  };
 }
