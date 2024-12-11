@@ -5,6 +5,8 @@ import { KeycloakService } from 'keycloak-angular';
   providedIn: 'root'
 })
 export class AuthService {
+
+
   router: any;
 
   constructor(private keycloakService: KeycloakService) {}
@@ -22,17 +24,30 @@ export class AuthService {
       }
     });
   }
-  login() {
+  login(email: string, password: string): Promise<any> {
     this.keycloakService.login().then(() => {
       this.router.navigate(['/dashboard']);
   });
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          error: 'Invalid email or password.'
+        });
+      }, 2000);
+    });
   }
 
   logout() {
     this.keycloakService.logout().then(() => {
       this.router.navigate(['/']);
     });
-  }
+  };
+
+  loginWithProvider(provider: string) {
+    this.keycloakService.login({
+      idpHint: provider
+    });
+  };
   
   isLoggedIn(): boolean {
     return this.keycloakService.isLoggedIn();
