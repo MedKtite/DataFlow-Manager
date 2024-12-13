@@ -32,7 +32,6 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/users*").hasRole("user")
-                        .requestMatchers("/admin*").hasRole("admin")
                         .anyRequest().permitAll()
                 )
                 .csrf(AbstractHttpConfigurer::disable); // Updated CSRF configuration
