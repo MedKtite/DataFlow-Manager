@@ -7,34 +7,58 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Configuration
 public class SecurityConfig {
 
-    // Provide Keycloak Authentication Provider
+    // Keycloak Authentication Provider
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(new KeycloakAuthenticationProvider());
     }
 
-    // Define session authentication strategy
+    // Session authentication strategy
     @Bean
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
         return new RegisterSessionAuthenticationStrategy(new org.springframework.security.core.session.SessionRegistryImpl());
     }
 
-    // Define SecurityFilterChain for security configurations
+    // SecurityFilterChain to secure API endpoints
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/users*").hasRole("user")
+                        .requestMatchers("/api/users/**").hasRole("admin") // Correct endpoint match
                         .anyRequest().permitAll()
                 )
-                .csrf(AbstractHttpConfigurer::disable); // Updated CSRF configuration
+                .csrf(AbstractHttpConfigurer::disable) // CSRF disabled for stateless API
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
         return http.build();
+    }
+
+    // Custom JWT Authentication Converter to map Keycloak roles
+    @Bean
+    public JwtAuthenticationConverter jwtAuthenticationConverter() {
+        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+        converter.setJwtGrantedAuthoritiesConverter(jwt -> {
+            Map<String, Object> realmAccess = jwt.getClaim("realm_access");
+
+            if (realmAccess != null && realmAccess.get("roles") instanceof List<?> roles) {
+                return roles.stream()
+                        .map(role -> new SimpleGrantedAuthority("ROLE_" + role)) // Ensure ROLE_ prefix
+                        .collect(Collectors.toList());
+            }
+            return List.of();
+        });
+        return converter;
     }
 }

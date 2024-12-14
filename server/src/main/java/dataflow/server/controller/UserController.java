@@ -23,10 +23,13 @@ public class UserController {
         this.userService = userService;
     }
 
+
+    // Helper method to get the current user's token
     private AccessToken getCurrentUserToken(Authentication authentication) {
         KeycloakPrincipal<?> principal = (KeycloakPrincipal<?>) authentication.getPrincipal();
         return principal.getKeycloakSecurityContext().getToken();
     }
+
 
     @GetMapping
     @PreAuthorize("hasRole('admin')")
