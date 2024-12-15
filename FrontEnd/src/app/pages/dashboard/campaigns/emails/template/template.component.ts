@@ -29,7 +29,9 @@ export class TemplateComponent {
     console.log('editorReady');
   }
 
-  exportHtml() {
-    this.emailEditor.editor.exportHtml((data) => console.log('exportHtml', data));
+  exportHtml(): void {
+    this.emailEditor.editor.exportHtml((data: { design: any; html: string }) => {
+      console.log('exportHtml', data);
+    });
   }
 }

@@ -8,20 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    CommonModule,
-    FontAwesomeModule,
-    importProvidersFrom(ReactiveFormsModule, 
-      FontAwesomeModule,
-      FaIconLibrary,
+    importProvidersFrom(
       CommonModule,
+      FontAwesomeModule,
+      ReactiveFormsModule,
       BrowserAnimationsModule,
       MatFormFieldModule,
-      MatInputModule,)
-  ],
-  
+      MatInputModule
+    )
+  ]
 };

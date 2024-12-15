@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +13,20 @@ export class AuthGuard extends KeycloakAuthGuard {
   }
 
   isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
       if (!this.authenticated) {
         this.keycloakAngular.login();
         return;
       }
 
-      const requiredRoles = route.data['roles'];
-      if (!requiredRoles || requiredRoles.length === 0) {
-        resolve(true);
-      } else {
-        const hasRequiredRole = requiredRoles.every((role: string) => this.roles.includes(role));
-        resolve(hasRequiredRole);
-      }
+      const requiredRoles = ['user'];
+      const hasRequiredRole = requiredRoles.every((role: string) => this.roles.includes(role));
+      resolve(hasRequiredRole);
     });
   }
+
+// Helper method to encapsulate role-checking logic
+    private hasAllRoles(requiredRoles: string[]): boolean {
+        return requiredRoles.every((role: string) => this.roles.includes(role));
+    }
 }

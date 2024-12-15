@@ -37,10 +37,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/api/users/**").hasRole("admin") // Correct endpoint match
+                        .requestMatchers("/api/users/**").hasRole("admin")
                         .anyRequest().permitAll()
                 )
-                .csrf(AbstractHttpConfigurer::disable) // CSRF disabled for stateless API
+                .csrf(AbstractHttpConfigurer::disable)
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
         return http.build();
     }
@@ -54,7 +54,7 @@ public class SecurityConfig {
 
             if (realmAccess != null && realmAccess.get("roles") instanceof List<?> roles) {
                 return roles.stream()
-                        .map(role -> new SimpleGrantedAuthority("ROLE_" + role)) // Ensure ROLE_ prefix
+                        .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
                         .collect(Collectors.toList());
             }
             return List.of();

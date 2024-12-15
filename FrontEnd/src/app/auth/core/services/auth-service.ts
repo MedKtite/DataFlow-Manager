@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  register(email: any, password: any, firstName: any, lastName: any) {
-    throw new Error('Method not implemented.');
-  }
 
-  constructor(private keycloakService: KeycloakService, private router: Router) {}
+  constructor(
+    private keycloakService: KeycloakService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   async init() {
     await this.keycloakService.init({
@@ -25,32 +27,39 @@ export class AuthService {
       }
     });
   }
-  login(email: string, password: string): Promise<any> {
-    this.keycloakService.login().then(() => {
+
+  async login(email: string, password: string): Promise<any> {
+    try {
+      await this.keycloakService.login();
       this.router.navigate(['/dashboard']);
-  });
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          error: 'Invalid email or password.'
-        });
-      }, 2000);
-    });
+    } catch (error) {
+      return {
+        error: 'Invalid email or password.'
+      };
+    }
   }
 
-  logout() {
-    this.keycloakService.logout().then(() => {
-      this.router.navigate(['/']);
-    });
-  };
+  async logout() {
+    await this.keycloakService.logout();
+    this.router.navigate(['/']);
+  }
 
   loginWithProvider(provider: string) {
     this.keycloakService.login({
       idpHint: provider
     });
-  };
-  
-  isLoggedIn(): boolean {
-    return this.keycloakService.isLoggedIn();
-  };
+  }
+
+  async isLoggedIn(): Promise<boolean> {
+    return await this.keycloakService.isLoggedIn();
+  }
+
+  register(email: string, password: string, firstName: string, lastName: string): Promise<any> {
+    return this.http.post('/api/register', {
+      email,
+      password,
+      firstName,
+      lastName
+    }).toPromise();
+  }
 }

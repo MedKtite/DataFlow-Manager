@@ -21,9 +21,8 @@ import { SMTPAPIComponent } from './user/smtp-api/smtp-api.component';
 import { PasswordComponent } from './user/password/password.component';
 import { UserComponent } from './user/user/user.component';
 import { AuthGuard } from './auth/core/guards/auth.guard';
-
-
-
+import { LoginComponent } from './auth/components/login/login.component';
+import { RegisterComponent } from './auth/components/sing-up/sing-up.component';
 
 export const routes: Routes = [
   {
@@ -33,10 +32,9 @@ export const routes: Routes = [
       { path: 'about', component: AboutComponent },
     ]
   },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard], // Protect the Dashboard page
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], // Protect the Dashboard page
     children: [
       {
         path: 'contacts',
@@ -51,7 +49,7 @@ export const routes: Routes = [
         children: [
           { path: 'emails', component: EmailsComponent,
             children: [
-              { path: 'template', component: TemplateComponent,data: { skipLayout: true} },
+              { path: 'template', component: TemplateComponent, data: { skipLayout: true } },
             ]
           },
           { path: 'sms', component: SmsComponent },
@@ -65,16 +63,17 @@ export const routes: Routes = [
         path: 'user',
         component: UserComponent,
         children: [
-          {path: 'profile', component: ProfileComponent},
+          { path: 'profile', component: ProfileComponent },
           { path: 'settings', component: SettingComponent },
           { path: 'security', component: SecurityComponent },
           { path: 'plans', component: PlansComponent },
           { path: 'senders-domains', component: SendersDomainsComponent },
-          { path: 'smtpl-api', component: SMTPAPIComponent },
-          {path: 'password', component: PasswordComponent}
+          { path: 'smtp-api', component: SMTPAPIComponent },
+          { path: 'password', component: PasswordComponent }
         ]
-    
       }
     ]
   },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' }
 ];
